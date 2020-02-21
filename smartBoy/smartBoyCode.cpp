@@ -190,13 +190,9 @@ void computeAns(){
 
 void printAns(){
 	
-	int bookCnt = 0;
-	int bibCount = 0;
-	
 	vector<int> credits[L];
 	
 	for(int i = 0 ; i < L ; i ++){
-		if(lib[i].done != 0) bibCount++;
 		for(int j = 0 ; j < lib[i].bookAmount ; j ++){
 			if(vis[libContent[lib[i].id][j]].second == lib[i].id){
 				credits[lib[i].id].push_back(libContent[lib[i].id][j]);
@@ -204,13 +200,20 @@ void printAns(){
 		}
 	}
 	
-	cout << bibCount << endl;
-	for(int i = 0 ; i < L ; i ++){
-		if(!credits[i].size()) continue;
-		bookCnt += credits[i].size();
-		cout << i << " " << credits[i].size() << endl;
-		for(int j = 0 ; j < credits[i].size() ; j ++){
-			cout << credits[i][j] << " ";
+	int bibCnt = ansOrder.size();
+	for(int i = 0 ; i < ansOrder.size() ; i ++)
+		if(!credits[ansOrder[i]].size()) --bibCnt;
+	
+	cout << bibCnt << endl;
+	
+	for(int i = 0 ; i < ansOrder.size() ; i ++){
+		
+		int ansLib = ansOrder[i];
+		if(!credits[ansLib].size()) continue;
+		cout << ansLib << " " << credits[ansLib].size() << endl;
+		
+		for(int j = 0 ; j < credits[ansLib].size() ; j ++){
+			cout << credits[ansLib][j] << " ";
 		}
 		cout << endl;
 	}
