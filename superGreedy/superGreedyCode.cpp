@@ -104,10 +104,11 @@ void print_ans(){
 	
 	cout << bibCount << endl;
 	for(int i = 0 ; i < L ; i ++){
-		if(!credits[i].size()) continue;
-		cout << i << " " << credits[i].size() << endl;
-		for(int j = 0 ; j < credits[i].size() ; j ++){
-			cout << credits[i][j] << " ";
+		int libAns = lib[i].id;
+		if(!credits[libAns].size()) continue;
+		cout << libAns << " " << credits[libAns].size() << endl;
+		for(int j = 0 ; j < credits[libAns].size() ; j ++){
+			cout << credits[libAns][j] << " ";
 		}
 		cout << endl;
 	}
