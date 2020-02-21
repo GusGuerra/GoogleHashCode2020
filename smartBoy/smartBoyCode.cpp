@@ -106,6 +106,9 @@ void merge(int i, int j){
 
 void libSolve(){
 	
+	for(int i = 0 ; i < L ; i ++) // sorting by index so I can compare using two pointers
+		sort(libContent[i].begin(), libContent[i].end());
+	
 	for(int i = 0 ; i < L ; i ++){
 		for(int j = i + 1 ; j < L ; j ++){
 			
